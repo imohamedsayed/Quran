@@ -263,7 +263,7 @@ function getSurahs() {
       };
       surahBoxes.forEach((sBox, index) => {
         sBox.onclick = () => {
-          fetch(`http://api.alquran.cloud/v1/surah/${index + 1}`)
+          fetch(`https://api.alquran.cloud/v1/surah/${index + 1}`)
             .then((res) => res.json())
             .then((data) => {
               let ayahs = data.data.ayahs;

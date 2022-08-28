@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Quraan Player</title>
+    <style>
+      body {
+        overflow-x: hidden;
+        background-color: #212123;
+        font-family: "cairo", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="main col-md-10 col-12">
+        <div class="mainHeader" dir="rtl">
+          <div class="header" dir="ltr">
+            <h1>Quran</h1>
+          </div>
+        </div>
+        <div class="landing">
+          <div class="intro w-50 position-absolute pt-5 pb-5" dir="rtl">
+            <h2>القراّن الكريم</h2>
+            <p class="mt-4">
+              اقرأ واستمع الى القراّن الكريم, والاحاديث النبوية الشريفة
+            </p>
+            <div class="btn btn-dark">استمع الان</div>
+          </div>
+          <div class="next">
+            <span class="carousel-control-next-icon"></span>
+          </div>
+          <div class="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </div>
+          <div class="backBullets"></div>
+        </div>
+        <div class="favs pt-5">
+          <div class="container">
+            <h1 class="text-center mb-5 fav-head">المفضلة</h1>
+
+            <div class="surahs container mt-5 pt-5"></div>
+          </div>
+        </div>
+        <div class="quran">
+          <div class="container mt-5 pt-5">
+            <h1 class="text-center mb-5">القراّن الكريم</h1>
+            <div class="row" dir="rtl"></div>
+          </div>
+          <div class="surah-popup has-scrollbar">
+            <div class="close"><i class="fa-solid fa-xmark"></i></div>
+            <div class="ayat" dir="rtl"></div>
+          </div>
+        </div>
+
+        <div class="listen">
+          <div class="container"></div>
+          <div class="play-options w-100">
+            <div class="text text-center" dir="rtl">
+              اضغط علي السورة للاستماع اليها
+            </div>
+            <audio src="" class="quraanAudio" controls autoplay></audio>
+            <div class="buttons">
+              <div class="icon prev-ayah">
+                <i class="fa-solid fa-backward"></i>
+              </div>
+              <div class="icon play-ayah"><i class="fa-solid fa-play"></i></div>
+              <div class="icon next-ayah">
+                <i class="fa-solid fa-forward"></i>
+              </div>
+            </div>
+          </div>
+          <div class="surahs container mt-5 pt-5"></div>
+        </div>
+        <div class="readers pt-5">
+          <div class="container"><div class="soon">قريباّ</div></div>
+        </div>
+        <div class="ahadeeth">
+          <div class="container">
+            <div class="hadeeth mb-5">
+              <p>
+                عن عمرو بن الحمق -رضي الله عنه-، قال رسول الله -صلى الله عليه
+                وسلم-: (إذا أرادَ اللَّهُ بِعبدٍ خيرًا استَعملَهُ. قيلَ وما
+                استَعملَهُ؟ قالَ: يفتَحُ لَهُ عملٌ صالِحٌ بينَ يدَي موتِهِ حتَّى
+                يَرضى عنهُ مَن حولَهُ).[٢] :
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عليه وسلم-: (يتْبَعُ المَيِّتَ ثَلاثَةٌ،
+                فَيَرْجِعُ اثْنانِ ويَبْقَى واحِدٌ، يَتْبَعُهُ أهْلُهُ ومالُهُ
+                (وعَمَلُهُ، فَيَرْجِعُ أهْلُهُ ومالُهُ ويَبْقَى عَمَلُهُ
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                عن عبد الله بن عمر -رضي الله عنه-، قال رسول الله -صلى الله عليه
+                وسلم-: (لا حَسَدَ إلَّا في اثْنَتَيْنِ: رَجُلٌ آتاهُ اللَّهُ
+                القُرْآنَ فَهو يَتْلُوهُ آناءَ اللَّيْلِ وآناءَ النَّهارِ،
+                ورَجُلٌ آتاهُ اللَّهُ مالًا فَهو يُنْفِقُهُ آناءَ اللَّيْلِ
+                وآناءَ النَّهارِ)
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عليه وسلم-: (خيرُ الناسِ مَنْ طالَ
+                عُمرُهُ وحَسُنَ عملُهُ)
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                عن عبد الله بن السائب أنَّ رسولَ اللهِ -صلَّى اللهُ عليْهِ
+                وسلَّمَ- كان يُصلِّي أربعًا بعدَ أن تَزولَ الشَّمسُ قبلَ
+                الظُّهرِ وقال: (إنَّها ساعةٌ تُفْتَحُ فيها أبوابُ السَّماءِ ،
+                فأُحِبُّ أن يصعَدَ لي فيها عملٌ صالِحٌ).
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عليه وسلم-: (ثَلَاثٌ مَن كُنَّ فيه وجَدَ
+                حَلَاوَةَ الإيمَانِ: أنْ يَكونَ اللَّهُ ورَسولُهُ أحَبَّ إلَيْهِ
+                ممَّا سِوَاهُمَا، وأَنْ يُحِبَّ المَرْءَ لا يُحِبُّهُ إلَّا
+                لِلَّهِ، وأَنْ يَكْرَهَ أنْ يَعُودَ في الكُفْرِ كما يَكْرَهُ أنْ
+                يُقْذَفَ في النَّارِ)
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عليه وسلم-: (إنَّ اللَّهَ كَتَبَ
+                الإحْسَانَ علَى كُلِّ شيءٍ، فَإِذَا قَتَلْتُمْ فأحْسِنُوا
+                القِتْلَةَ، وإذَا ذَبَحْتُمْ فأحْسِنُوا الذَّبْحَ، وَلْيُحِدَّ
+                أَحَدُكُمْ شَفْرَتَهُ، فَلْيُرِحْ ذَبِيحَتَهُ).
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عليه وسلم-: (نِعْمَ ما لأحَدِهِمْ
+                يُحْسِنُ عِبادَةَ رَبِّهِ ويَنْصَحُ لِسَيِّدِهِ).[١٩]
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                ال رسول الله -صلى الله عليه وسلم-: (رِبَاطُ يَومٍ في سَبيلِ
+                اللَّهِ خَيْرٌ مِنَ الدُّنْيَا وما عَلَيْهَا، ومَوْضِعُ سَوْطِ
+                أَحَدِكُمْ مِنَ الجَنَّةِ خَيْرٌ مِنَ الدُّنْيَا وما عَلَيْهَا،
+                والرَّوْحَةُ يَرُوحُهَا العَبْدُ في سَبيلِ اللَّهِ، أَوِ
+                الغَدْوَةُ خَيْرٌ مِنَ الدُّنْيَا وما عَلَيْهَا)
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عليه وسلم-: (إنَّ أدْنَى مَقْعَدِ
+                أحَدِكُمْ مِنَ الجَنَّةِ أنْ يَقُولَ له: تَمَنَّ فَيَتَمَنَّى،
+                ويَتَمَنَّى، فيَقولُ له: هلْ تَمَنَّيْتَ؟ فيَقولُ: نَعَمْ،
+                فيَقولُ له: فإنَّ لكَ ما تَمَنَّيْتَ ومِثْلَهُ معهُ).
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عليه وسلم-: (أَوَّلُ زُمْرَةٍ تَلِجُ
+                الجَنَّةَ، صُوَرُهُمْ علَى صُورَةِ القَمَرِ لَيْلَةَ البَدْرِ،
+                لا يَبْصُقُونَ فيها ولا يَمْتَخِطُونَ ولا يَتَغَوَّطُونَ فيها،
+                آنِيَتُهُمْ وأَمْشاطُهُمْ مِنَ الذَّهَبِ والْفِضَّةِ،
+                ومَجامِرُهُمْ مِنَ الألُوَّةِ، ورَشْحُهُمُ المِسْكُ)
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله-صلى الله عيه وسلم-: (إنَّ في الجَنَّةِ غُرفةً
+                يُرَى ظاهرُها مِن باطنِها، وباطنُها مِن ظاهرِها، فقال أبو موسى
+                الأشعريُّ: لمَن هي يا رسولَ اللهِ؟ قال: لمَن ألانَ الكلامَ،
+                وأطعَمَ الطَّعامَ، وبات للهِ قائمًا والنَّاسُ نيامٌ).
+              </p>
+            </div>
+            <div class="hadeeth mb-5">
+              <p>
+                قال رسول الله -صلى الله عيه وسلم-: (إنَّ الرَّجُلَ لَيَعْمَلُ
+                الزَّمَنَ الطَّوِيلَ بِعَمَلِ أَهْلِ النَّارِ، ثُمَّ يُخْتَمُ له
+                عَمَلُهُ بِعَمَلِ أَهْلِ الجَنَّةِ).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="aside col-md-2 d-md-block d-sm-none">
+        <div class="container">
+          <ul class="list-unstyled navList" dir="rtl">
+            <li>
+              <a href="#" data-section="landing"
+                ><i class="fa-solid fa-house"></i>الصفحة الرئيسية</a
+              >
+            </li>
+            <li>
+              <a href="#" data-section="favs"
+                ><i class="fa-solid fa-heart"></i>قائمة المفضلة</a
+              >
+            </li>
+            <li>
+              <a href="#" data-section="quran"
+                ><i class="fa-solid fa-book-quran"></i>القراّن الكريم</a
+              >
+            </li>
+            <li>
+              <a href="#" data-section="listen"
+                ><i class="fa-solid fa-headphones"></i>الاستماع الي القراّن</a
+              >
+            </li>
+            <li>
+              <a href="#" data-section="ahadeeth"
+                ><i class="fa-solid fa-moon"></i>أحاديث نبوية</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer">
+          <div class="container">
+            <p>Designed By &copy; Mohamed ElSayed - 2022</p>
+            <div class="socials w-100">
+              <a target="_blank" href="https://web.facebook.com/Eldbeany">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+
+              <a target="_blank" href="https://twitter.com/Eldbeany"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+
+              <a target="_blank" href="https://github.com/Mohamed-Sayed2077"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/mohamed-el-sayed-4854b421a/"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sliderAside">
+      <div class="asideToggler">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="container">
+        <ul class="list-unstyled navList" dir="rtl">
+          <li>
+            <a href="#" data-section="landing"
+              ><i class="fa-solid fa-house"></i>الصفحة الرئيسية</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="favs"
+              ><i class="fa-solid fa-heart"></i>قائمة المفضلة</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="quran"
+              ><i class="fa-solid fa-book-quran"></i>القراّن الكريم</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="listen"
+              ><i class="fa-solid fa-headphones"></i>الاستماع الي القراّن</a
+            >
+          </li>
+          <li>
+            <a href="#" data-section="ahadeeth"
+              ><i class="fa-solid fa-moon"></i>أحاديث نبوية</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="footer">
+        <div class="container">
+          <p>Designed By &copy; Mohamed ElSayed - 2022</p>
+          <div class="socials w-100">
+            <a target="_blank" href="https://web.facebook.com/Eldbeany">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a target="_blank" href="https://twitter.com/Eldbeany"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+
+            <a target="_blank" href="https://github.com/Mohamed-Sayed2077"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/mohamed-el-sayed-4854b421a/"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+  </body>
+</html>

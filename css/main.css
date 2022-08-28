@@ -1,0 +1,645 @@
+/* 
+--bg-black-900: #191919;
+  --bg-black-100: #212123;
+  --bg-black-50: #28282a;
+  --text-black-900: #ffffff;
+  --text-black-700: #e9e9e9;
+  --intro-color: #d5d5d5a3;
+  --footer-color: #151515;
+  --active-color: #c9a86b;
+
+*/
+.main .landing .prev, .main .landing .next {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 8px;
+  background-color: rgba(68, 68, 68, 0.4392156863);
+  cursor: pointer;
+}
+
+.sliderAside, .aside {
+  background-color: #191919;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sliderAside ul, .aside ul {
+  direction: rtl;
+  display: block;
+  margin: 50px 0;
+}
+.sliderAside ul li, .aside ul li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(68, 68, 68, 0.4392156863);
+  padding-bottom: 5px;
+}
+.sliderAside ul li a, .aside ul li a {
+  text-decoration: none;
+  color: #c9a86b;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.sliderAside ul li a svg, .aside ul li a svg {
+  margin-left: 10px;
+}
+.sliderAside ul li:not(:last-of-type), .aside ul li:not(:last-of-type) {
+  margin-bottom: 10%;
+}
+.sliderAside .footer, .aside .footer {
+  color: #555;
+  position: absolute;
+  bottom: 20px;
+}
+.sliderAside .footer .socials, .aside .footer .socials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.sliderAside .footer .socials a, .aside .footer .socials a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  background-color: rgba(151, 145, 145, 0.0392156863);
+  color: black;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+.sliderAside .footer .socials a:hover, .aside .footer .socials a:hover {
+  color: #c9a86b;
+}
+
+.main .readers .card {
+  background-color: #28282a;
+  color: #e9e9e9;
+  direction: rtl;
+  overflow: hidden;
+  cursor: pointer;
+}
+.main .readers .card .playOption {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(150%, -30%);
+          transform: translate(150%, -30%);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.main .readers .card .playOption span {
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+.main .readers .card .playOption span svg {
+  font-size: 40px;
+  line-height: 40px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.main .readers .card .playOption span svg:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+.main .readers .card:hover .playOption {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+body::-webkit-scrollbar {
+  width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.764);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #c9a86b;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #f1a71f;
+}
+
+has-scrollbar {
+  padding-bottom: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  /* for vertical scroll */
+  height: 12px;
+  /* for horizontal scroll */
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  background: #c9a86b;
+  border: 1px solid #fff;
+  border-radius: 20px;
+}
+
+.main {
+  background-color: #212123;
+  direction: "rtl";
+}
+.main .mainHeader {
+  min-height: 40px;
+  padding: 10px 20px;
+  background-color: #212123;
+  color: #e9e9e9;
+}
+.main .mainHeader .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #c9a86b;
+}
+.main .mainHeader .header input {
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  border: none;
+  margin-right: 20px;
+  font-size: 1.03rem;
+  border-radius: 7px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.main .mainHeader .header input:focus {
+  outline: none;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+.main .mainHeader .header h1 {
+  color: #c9a86b;
+}
+.main .landing {
+  height: calc(100vh - 85px);
+  background: url("../imgs/landing/h0.png");
+  background-size: cover;
+  position: relative;
+}
+.main .landing .intro {
+  padding-left: 10px;
+  padding-right: 15%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: #c9a86b;
+}
+.main .landing .intro p {
+  font-size: 24px;
+}
+.main .landing .next {
+  right: 5px;
+}
+.main .landing .prev {
+  left: 5px;
+}
+.main .landing .backBullets {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.main .landing .backBullets span {
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #fff;
+  opacity: 0.5;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.main .landing .backBullets span.active {
+  opacity: 1;
+}
+.main .landing .backBullets span:not(:last-of-type) {
+  margin-right: 5px;
+}
+.main .quran {
+  display: none;
+}
+.main .quran h1 {
+  color: #c9a86b;
+  font-weight: 700;
+}
+.main .quran .row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.main .quran .surah-box {
+  width: 200px;
+  height: 200px;
+  background-color: #28282a;
+  margin: 10px;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 8px rgba(153, 153, 153, 0.372);
+          box-shadow: 0 0 8px rgba(153, 153, 153, 0.372);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.main .quran .surah-box:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+.main .surah-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  z-index: 2;
+  background-color: rgba(8, 8, 8, 0.867);
+  color: #c9a86b;
+  padding: 20px;
+  overflow: auto;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  font-size: 2rem;
+}
+.main .surah-popup.open {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.main .surah-popup .close {
+  position: sticky;
+  width: 50px;
+  font-weight: bold;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  top: 10px;
+  color: white;
+  padding: 10px 12px;
+  background-color: grey;
+  left: 10px;
+  border-radius: 10px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.main .surah-popup .close:hover {
+  -webkit-box-shadow: 0 0 20px white;
+          box-shadow: 0 0 20px white;
+}
+.main .surah-popup .ayat {
+  margin-top: 50px;
+}
+.main .listen .play-options, .main .favs .play-options {
+  background: -webkit-gradient(linear, left top, right top, from(#111), to(#222));
+  background: linear-gradient(to right, #111, #222);
+  z-index: 20;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: sticky;
+  top: 0;
+  padding: 10px 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  -webkit-box-shadow: 0 0 10px rgba(255, 217, 0, 0.197);
+          box-shadow: 0 0 10px rgba(255, 217, 0, 0.197);
+}
+.main .listen .play-options .text, .main .favs .play-options .text {
+  font-size: 2rem;
+  color: #c9a86b;
+}
+.main .listen .play-options audio, .main .favs .play-options audio {
+  width: 80%;
+}
+.main .listen .play-options .buttons, .main .favs .play-options .buttons {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.main .listen .play-options .buttons div, .main .favs .play-options .buttons div {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+.main .listen, .main .favs {
+  display: none;
+}
+.main .listen .surahs, .main .favs .surahs {
+  position: relative;
+}
+.main .listen .surahs::before, .main .favs .surahs::before {
+  content: "";
+  height: 100%;
+  width: 3px;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  background-color: #c9a86b;
+}
+.main .listen .surahs .surah, .main .favs .surahs .surah {
+  color: #fff;
+  min-height: 100px;
+  width: calc(100% - 60px);
+  background-color: #28282a;
+  padding: 10px;
+  position: relative;
+  -webkit-box-shadow: 0 0 5px #c9a86b;
+          box-shadow: 0 0 5px #c9a86b;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.main .listen .surahs .surah:hover, .main .favs .surahs .surah:hover {
+  -webkit-box-shadow: 0 0 15px #c9a86b;
+          box-shadow: 0 0 15px #c9a86b;
+}
+.main .listen .surahs .surah:hover::after, .main .favs .surahs .surah:hover::after {
+  background-color: black;
+}
+.main .listen .surahs .surah:not(:last-of-type), .main .favs .surahs .surah:not(:last-of-type) {
+  margin-bottom: 2%;
+}
+.main .listen .surahs .surah::after, .main .favs .surahs .surah::after {
+  content: attr(data-index);
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  background-color: #c9a86b;
+  border: 1px solid #fff;
+  z-index: 3;
+  top: 50%;
+  right: -55px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.main .listen .surahs .surah::before, .main .favs .surahs .surah::before {
+  content: "";
+  position: absolute;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent;
+  top: 50%;
+  right: -40px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-left-color: rgba(201, 168, 107, 0.5215686275);
+}
+.main .listen .surahs .surah .fav, .main .favs .surahs .surah .fav {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  background-color: #c9a86b;
+  color: black;
+}
+.main .listen .surahs .surah .fav svg:hover, .main .favs .surahs .surah .fav svg:hover {
+  color: red;
+}
+.main .fav-head {
+  color: #c9a86b;
+}
+.main .favs {
+  height: 100%;
+  display: none;
+}
+.main .favs .remove-fav {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: rgba(153, 153, 153, 0.372);
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.main .favs .remove-fav:hover {
+  -webkit-box-shadow: 0 0 5px wheat;
+          box-shadow: 0 0 5px wheat;
+}
+.main .readers {
+  display: none;
+}
+.main .readers .card .card-title {
+  color: #c9a86b;
+}
+.main .readers .soon {
+  margin: auto;
+  font-size: 4rem;
+  color: #c9a86b;
+  text-align: center;
+}
+.main .ahadeeth {
+  display: none;
+  padding-top: 50px;
+}
+.main .ahadeeth .container {
+  position: relative;
+}
+.main .ahadeeth .container::before {
+  content: "";
+  height: 100%;
+  width: 3px;
+  position: absolute;
+  right: 50px;
+  top: 0;
+  background-color: #c9a86b;
+}
+.main .ahadeeth .hadeeth {
+  min-height: 100px;
+  background-color: #28282a;
+  color: #fff;
+  font-size: 26px;
+  padding: 20px;
+  width: calc(100% - 80px);
+  direction: rtl;
+  position: relative;
+  border: 1px solid rgba(201, 168, 107, 0.0901960784);
+  -webkit-box-shadow: 0 5px 20px rgba(255, 217, 0, 0.197);
+          box-shadow: 0 5px 20px rgba(255, 217, 0, 0.197);
+}
+.main .ahadeeth .hadeeth::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #c9a86b;
+  border: 1px solid #fff;
+  z-index: 3;
+  top: 50%;
+  right: -50px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.main .ahadeeth .hadeeth::before {
+  content: "";
+  position: absolute;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent;
+  top: 50%;
+  right: -40px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-left-color: rgba(201, 168, 107, 0.5215686275);
+}
+
+.aside {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.sliderAside {
+  display: none !important;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  -webkit-transform: translateX(300px);
+          transform: translateX(300px);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: none !important;
+}
+.sliderAside .asideToggler {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  padding: 20px;
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 10px;
+  left: -50px;
+  cursor: pointer;
+}
+.sliderAside .asideToggler svg {
+  font-size: 1.5rem;
+}
+.sliderAside.open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+@media (max-width: 700px) {
+  .landing .intro {
+    width: 100% !important;
+    padding-right: 40px;
+    padding-left: 10px;
+  }
+
+  .surah-popup {
+    width: 90% !important;
+    height: 90% !important;
+  }
+}
+@media (max-width: 992px) {
+  .aside {
+    display: none !important;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .play-options {
+    width: 100%;
+  }
+
+  .sliderAside {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+}

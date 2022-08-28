@@ -242,7 +242,7 @@ function getQuran() {
 let quranSurahsContainer = document.querySelector(".quran .row");
 getSurahs();
 function getSurahs() {
-  fetch("http://api.alquran.cloud/v1/meta")
+  fetch("https://api.alquran.cloud/v1/meta")
     .then((response) => response.json())
     .then((data) => {
       let quranSurahs = data.data.surahs.references;

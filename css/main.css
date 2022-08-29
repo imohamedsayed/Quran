@@ -302,7 +302,7 @@ has-scrollbar {
           transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
-  z-index: 2;
+  z-index: 900;
   background-color: rgba(8, 8, 8, 0.867);
   color: #c9a86b;
   padding: 20px;
@@ -574,6 +574,17 @@ has-scrollbar {
   position: fixed;
   top: 0;
   right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
 }
 
 .sliderAside {

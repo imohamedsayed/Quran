@@ -143,14 +143,12 @@ function getQuran() {
       let allSurahs = document.querySelectorAll(".listen .surahs .surah"),
         ayaAudios,
         ayahsText;
-      console.log(allSurahs);
       allSurahs.forEach((s, index) => {
         s.addEventListener("click", () => {
           fetch(`https://quran-endpoint.vercel.app/quran/${index + 1}`)
             .then((response) => response.json())
             .then((data) => {
               let verses = data.data.ayahs;
-              console.log(index);
 
               ayaAudios = [];
               ayahsText = [];
@@ -290,4 +288,16 @@ let asideRight = document.querySelector(".sliderAside"),
 
 asideToggler.addEventListener("click", () => {
   asideRight.classList.toggle("open");
+  if (asideRight.classList.contains("open")) {
+    document.querySelector(".overlay").style.display = "block";
+  } else {
+    document.querySelector(".overlay").style.display = "none";
+  }
 });
+document.querySelector(".overlay").onclick = () => {
+  if (asideRight.classList.remove("open")) {
+    asideRight.classList.remove("open");
+  }
+
+  document.querySelector(".overlay").style.display = "none";
+};

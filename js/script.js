@@ -100,7 +100,6 @@ let quraanAudio = document.querySelector(".listen .quraanAudio"),
   prevAya = document.querySelector(".listen .prev-ayah");
 play = document.querySelector(".listen .play-ayah");
 let favsSurahs = document.querySelector(".favs .surahs");
-
 var favorites;
 if (localStorage.favs != null) {
   favorites = JSON.parse(localStorage.favs);
@@ -108,12 +107,13 @@ if (localStorage.favs != null) {
   favorites = [];
 }
 
-getQuran();
+let surahsData;
 
 function getQuran() {
   fetch("https://quran-endpoint.vercel.app/quran")
     .then((Response) => Response.json())
     .then((data) => {
+      surahsData = data;
       for (let surah in data.data) {
         surahs.innerHTML += `
         <div class='surah' dir='rtl' data-index=${parseInt(surah) + 1}>
@@ -124,116 +124,151 @@ function getQuran() {
           )}><i class="fa-solid fa-heart"></i></div>
         </div>
         `;
+        getFavSurahs(surah);
+      }
+      let allSurahs = document.querySelectorAll(".listen .surahs .surah");
+      allSurahs.forEach((s, index) => {
+        s.addEventListener("click", () => {
+          playQuran(index);
+        });
+      });
 
-        if (favorites.includes(surah)) {
-          favsSurahs.innerHTML += `
-          <div class='surah' dir='rtl' data-index=${parseInt(surah) + 1}>
-            <p>${data.data[surah].asma.ar.long}</p>
-            <p>${data.data[surah].asma.en.long}</p>
+      let fs = document.querySelectorAll(".favs .surahs .surah");
+      fs.forEach((s) => {
+        s.addEventListener("click", () => {
+          playQuran(parseInt(s.dataset.index) - 1);
+        });
+      });
+      // handle fav and remove fav
+      var hearts = document.querySelectorAll(".surah .fav");
+      hearts.forEach((heart) => {
+        heart.addEventListener("click", () => {
+          heart.style.color = "red";
 
-            <div class='remove-fav' data-id=${parseInt(
-              surah
+          if (!favorites.includes(heart.dataset.id)) {
+            favorites.push(heart.dataset.id);
+            localStorage.favs = JSON.stringify(favorites);
+            getFavSurahs(heart.dataset.id);
+          }
+        });
+
+        checkHeart();
+      });
+
+      function checkHeart() {
+        hearts.forEach((heart, index) => {
+          if (favorites.includes(String(index))) {
+            heart.style.color = "red";
+          } else {
+            heart.style.color = "black";
+          }
+        });
+      }
+    });
+}
+getQuran();
+
+// get favorites surahs
+
+function getFavSurahs(sIndex) {
+  if (favorites.includes(sIndex)) {
+    favsSurahs.innerHTML += `
+          <div class='surah' dir='rtl' data-index=${parseInt(sIndex) + 1}>
+            <p>${surahsData.data[sIndex].asma.ar.long}</p>
+            <p>${surahsData.data[sIndex].asma.en.long}</p>
+
+            <div class='remove-fav' onclick='removeFav(this)' data-id=${parseInt(
+              sIndex
             )}><i class="fa-solid fa-xmark"></i></div>
           </div>
         `;
+  } else {
+    return;
+  }
+}
+
+function removeFav(item) {
+  item.parentElement.remove();
+  favorites.splice(favorites.indexOf(item.dataset.id), 1);
+  localStorage.favs = JSON.stringify(favorites);
+  var hearts = document.querySelectorAll(".surah .fav");
+  hearts.forEach((heart, index) => {
+    if (favorites.includes(String(index))) {
+      heart.style.color = "red";
+    } else {
+      heart.style.color = "black";
+    }
+  });
+}
+
+function playQuran(surahIndex) {
+  let ayaAudios;
+  let ayahsText;
+  fetch(`https://quran-endpoint.vercel.app/quran/${surahIndex + 1}`)
+    .then((response) => response.json())
+    .then((data) => {
+      let verses = data.data.ayahs;
+
+      ayaAudios = [];
+      ayahsText = [];
+      verses.forEach((verse) => {
+        ayaAudios.push(verse.audio.url);
+        ayahsText.push(verse.text.ar);
+      });
+      let audioIndex = 0;
+      changeAyah(audioIndex);
+      quraanAudio.addEventListener("ended", () => {
+        audioIndex++;
+        if (audioIndex < ayaAudios.length) {
+          changeAyah(audioIndex);
         } else {
-          continue;
+          audioIndex = 0;
+          changeAyah(audioIndex);
+          quraanAudio.pause();
+          isPlaying = true;
+          togglePlaying();
+        }
+      });
+
+      // next and prev buttons
+
+      nextAya.onclick = () => {
+        if (audioIndex < ayaAudios.length - 1) {
+          audioIndex++;
+          changeAyah(audioIndex);
+        }
+      };
+      prevAya.onclick = () => {
+        if (audioIndex > 0) {
+          audioIndex--;
+          changeAyah(audioIndex);
+        }
+      };
+
+      // play/pause button
+      let isPlaying = false;
+      togglePlaying();
+      function togglePlaying() {
+        if (isPlaying) {
+          quraanAudio.pause();
+          play.innerHTML = '<i class="fa-solid fa-play">';
+          isPlaying = false;
+        } else {
+          quraanAudio.play();
+          play.innerHTML = '<i class="fa-solid fa-pause">';
+          isPlaying = true;
         }
       }
-      let allSurahs = document.querySelectorAll(".listen .surahs .surah"),
-        ayaAudios,
-        ayahsText;
-      allSurahs.forEach((s, index) => {
-        s.addEventListener("click", () => {
-          fetch(`https://quran-endpoint.vercel.app/quran/${index + 1}`)
-            .then((response) => response.json())
-            .then((data) => {
-              let verses = data.data.ayahs;
+      play.addEventListener("click", togglePlaying);
 
-              ayaAudios = [];
-              ayahsText = [];
-              verses.forEach((verse) => {
-                ayaAudios.push(verse.audio.url);
-                ayahsText.push(verse.text.ar);
-              });
-              let audioIndex = 0;
-              changeAyah(audioIndex);
-              quraanAudio.addEventListener("ended", () => {
-                audioIndex++;
-                if (audioIndex < ayaAudios.length) {
-                  changeAyah(audioIndex);
-                } else {
-                  audioIndex = 0;
-                  changeAyah(audioIndex);
-                  quraanAudio.pause();
-                  isPlaying = true;
-                  togglePlaying();
-                }
-              });
-
-              // next and prev buttons
-
-              nextAya.onclick = () => {
-                if (audioIndex < ayaAudios.length - 1) {
-                  audioIndex++;
-                  changeAyah(audioIndex);
-                }
-              };
-              prevAya.onclick = () => {
-                if (audioIndex > 0) {
-                  audioIndex--;
-                  changeAyah(audioIndex);
-                }
-              };
-
-              // play/pause button
-              let isPlaying = false;
-              togglePlaying();
-              function togglePlaying() {
-                if (isPlaying) {
-                  quraanAudio.pause();
-                  play.innerHTML = '<i class="fa-solid fa-play">';
-                  isPlaying = false;
-                } else {
-                  quraanAudio.play();
-                  play.innerHTML = '<i class="fa-solid fa-pause">';
-                  isPlaying = true;
-                }
-              }
-              play.addEventListener("click", togglePlaying);
-
-              function changeAyah(index) {
-                quraanAudio.src = ayaAudios[index];
-                ayah.innerHTML = ayahsText[index];
-              }
-            });
-        });
-      });
-
-      // handle fav and remove fav
-      var hearts = document.querySelectorAll(".surah .fav");
-      hearts.forEach((heart, index) => {
-        heart.addEventListener("click", () => {
-          if (!favorites.includes(heart.dataset.id)) {
-            favorites.push(heart.dataset.id);
-          }
-          localStorage.favs = JSON.stringify(favorites);
-          location.reload();
-        });
-        if (favorites.includes(String(index))) {
-          heart.style.color = "red";
-        }
-      });
-      var remove = document.querySelectorAll(".surah .remove-fav");
-      remove.forEach((r) => {
-        r.addEventListener("click", () => {
-          favorites.splice(favorites.indexOf(r.dataset.id), 1);
-          localStorage.favs = JSON.stringify(favorites);
-          location.reload();
-        });
-      });
+      function changeAyah(index) {
+        quraanAudio.src = ayaAudios[index];
+        ayah.innerHTML = ayahsText[index];
+      }
     });
 }
+
+// favorites surahs playing
 
 // Quraan Section
 
